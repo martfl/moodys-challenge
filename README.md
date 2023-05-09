@@ -43,7 +43,7 @@ Rover 2: Position (3, 3, E)
 
 To run the script, you can either use an input file or pass the input data directly through the command line. To use an input file, create a text file with the input data formatted according to the problem description, and then run the script as follows:
 
-`python main.py < input.txt`
+`python main.py < input_test.txt`
 
 
 To pass the input data directly through the command line, run the script and enter the input data when prompted and send the EOF command to end (Ctrl+D):
