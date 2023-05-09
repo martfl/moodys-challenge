@@ -52,6 +52,13 @@ To pass the input data directly through the command line, run the script and ent
 
 
 ## Running the Tests
+The unit tests for the Mars Rover Navigation script cover the following aspects of the script's functionality:
+
+- Rover class: The tests verify the behavior of the Rover class by testing the private methods _turn and _move, ensuring that the rover turns and moves correctly according to the given instructions.
+- process_rover and parse_input functions: The tests check if the functions correctly processes the rover's position, direction, and instructions and returns the expected final position and direction while also validating the correctness of the input data and raise appropriate exceptions.
+- Stress test: A stress test is included to verify the script's performance when handling large input data, testing its efficiency and scalability.
+- Invalid input data: Several tests are designed to check if the script can handle various types of invalid input data, such as missing rover positions, missing instructions, or invalid characters in the input.
+
 
 To run the tests, simply execute the following command in your terminal:
 
