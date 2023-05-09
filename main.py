@@ -2,28 +2,24 @@ import re
 import sys
 from typing import List, Tuple
 
+
 class Rover:
     """
     Represents a Mars rover with a position (x, y) and a direction (N, E, S, W).
     The rover can process instructions to move or turn on a plateau of given size.
     """
 
-    DIRECTIONS = {
-        'N': (0, 1),
-        'E': (1, 0),
-        'S': (0, -1),
-        'W': (-1, 0)
-    }
+    DIRECTIONS = {"N": (0, 1), "E": (1, 0), "S": (0, -1), "W": (-1, 0)}
 
     TURNS = {
-        ('N', 'L'): 'W',
-        ('N', 'R'): 'E',
-        ('E', 'L'): 'N',
-        ('E', 'R'): 'S',
-        ('S', 'L'): 'E',
-        ('S', 'R'): 'W',
-        ('W', 'L'): 'S',
-        ('W', 'R'): 'N',
+        ("N", "L"): "W",
+        ("N", "R"): "E",
+        ("E", "L"): "N",
+        ("E", "R"): "S",
+        ("S", "L"): "E",
+        ("S", "R"): "W",
+        ("W", "L"): "S",
+        ("W", "R"): "N",
     }
 
     def __init__(self, x: int, y: int, d: str, plateau_size: Tuple[int, int]):
@@ -38,9 +34,9 @@ class Rover:
 
         :param instruction: A single-character string representing the instruction ('L', 'R', or 'M').
         """
-        if instruction in ('L', 'R'):
+        if instruction in ("L", "R"):
             self._turn(instruction)
-        elif instruction == 'M':
+        elif instruction == "M":
             self._move()
 
     def _turn(self, direction: str) -> None:
@@ -65,7 +61,8 @@ class Rover:
     def __str__(self) -> str:
         return f"{self.x} {self.y} {self.direction}"
 
-# process final rover position from instruction list 
+
+# process final rover position from instruction list
 def process_rover(pos: str, instructions: str, plateau_size: Tuple[int, int]) -> str:
     """
     Process rover's position and instructions to determine its final position on the plateau.
@@ -80,6 +77,7 @@ def process_rover(pos: str, instructions: str, plateau_size: Tuple[int, int]) ->
     for instruction in instructions:
         rover.process_instruction(instruction)
     return str(rover)
+
 
 def parse_input(input_str: str) -> Tuple[Tuple[int, int], List[Tuple[str, str]]]:
     """
@@ -97,22 +95,25 @@ def parse_input(input_str: str) -> Tuple[Tuple[int, int], List[Tuple[str, str]]]
 
     rover_data = []
     rover_input_list = input_list[1:]
-    
+
     if len(rover_input_list) % 2 != 0:
         raise ValueError("missing rover instructions")
 
-    position_pattern = re.compile(r'^\d+ \d+ [NESW]$')
-    instruction_pattern = re.compile(r'^([LRM]\s*)+$') 
+    position_pattern = re.compile(r"^\d+ \d+ [NESW]$")
+    instruction_pattern = re.compile(r"^([LRM]\s*)+$")
 
     for i in range(0, len(rover_input_list), 2):
         rover_position = rover_input_list[i]
-        rover_instructions = rover_input_list[i+1]
-        
-        if not position_pattern.match(rover_position) or not instruction_pattern.match(rover_instructions):
+        rover_instructions = rover_input_list[i + 1]
+
+        if not position_pattern.match(rover_position) or not instruction_pattern.match(
+            rover_instructions
+        ):
             raise ValueError("invalid rover position or instructions")
         rover_data.append((rover_position, rover_instructions))
 
     return plateau_size, rover_data
+
 
 def main():
     """
@@ -129,6 +130,7 @@ def main():
     for rover_position, rover_instructions in rover_data:
         final_position = process_rover(rover_position, rover_instructions, plateau_size)
         print(final_position)
+
 
 if __name__ == "__main__":
     main()
