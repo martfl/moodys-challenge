@@ -1,4 +1,4 @@
-# Mars Rover Navigation
+# Mars Rover Navigation 🚀🤖
 
 
 ## Overview
@@ -64,4 +64,6 @@ To run the tests, simply execute the following command in your terminal:
 
 - If the rover instructions and positions were to be processed in parallel, we could use multiprocessing or multithreading to execute the instructions for multiple rovers simultaneously. However, this would only be applicable if the rovers' movements did not depend on each other (i.e., if they could move at the same time).
 
+- Create a Plateau class. Instead of using a tuple to represent the plateau size, create a Plateau class that encapsulates the dimensions and the grid. This will make it easier to handle the grid and any associated operations, such as checking if a position is within bounds.
 
+- Implement a command-line interface to allow users to provide input data via command-line arguments or input files.
